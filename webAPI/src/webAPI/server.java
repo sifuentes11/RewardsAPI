@@ -14,12 +14,12 @@ import com.sun.net.httpserver.HttpServer;
 public class server {
 
 	public static int port = 9000;
-	public static ArrayList<Map> transactions;
+	public static ArrayList<transaction> transactions;
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		transactions = new ArrayList<Map>();
+		transactions = new ArrayList<transaction>();
 		
 		HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 		System.out.println("server started at " + port);

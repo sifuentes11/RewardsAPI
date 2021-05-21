@@ -4,15 +4,18 @@ import java.util.Date;
 
 public class transaction {
 
-	String name;
+	String payer;
 	int points;
-	Date timeStamp;
+	Date timestamp;
 	
-	
-	public transaction(String name, int points, Date timeStamp) {
-		this.name = name;
-		this.points = points;
-		this.timeStamp = timeStamp;
+	public transaction() {
+
 	}
+	
+//	public transaction(String name, int points, Date timeStamp) {
+//		this.name = name;
+//		this.points = points;
+//		this.timeStamp = timeStamp;
+//	}
 
 }
