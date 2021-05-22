@@ -26,15 +26,31 @@ public class pointsGetHandler implements HttpHandler {
 
             // send response
 		
+		    
+		    HashMap<String, Integer> hm = new HashMap<>();
+		    
+		    for (transaction i : server.transactions) {
+	            String payer = i.payer;
+	            int points = i.points;
+
+	            hm.merge(payer, points, Integer::sum);
+	            
+//	            hm.put(i.payer, getOrDefault(payer, 0) + i.points);
+	        }
+		    
 		    String response = "{\n";
-		
-			for (int i = 0; i < server.transactions.size(); i++) {
+		    
+		    int i = 0;
+		    
+			for (String key : hm.keySet()) {
 				
-				if (i == server.transactions.size() - 1) {
-					response += "\t\"" + server.transactions.get(i).payer + "\": " + server.transactions.get(i).points + "\n}\n";
+				if (i == hm.keySet().size() - 1) {
+					response += "\t\"" + key + "\": " + hm.get(key) + "\n}\n";
 				} else {
-					response += "\t\"" + server.transactions.get(i).payer + "\": " + server.transactions.get(i).points + ",\n";
-				}	
+					response += "\t\"" + key + "\": " + hm.get(key) + ",\n";
+				}
+				
+				i++;
 				
 			}
 			
