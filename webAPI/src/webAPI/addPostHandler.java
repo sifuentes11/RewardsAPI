@@ -36,6 +36,8 @@ public class addPostHandler implements HttpHandler {
         os.write(response.toString().getBytes());
         os.close();
         
+        
+        // adds transaction to transaction ledger ArrayList
         server.transactions.add(t);
 	}
 
